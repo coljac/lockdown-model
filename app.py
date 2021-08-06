@@ -59,6 +59,14 @@ probability_day_outbreak = st.sidebar.slider('Chance of new outbreak per day', v
 snap_lockdown_time = st.sidebar.slider('Snap lockdown initial time', value=7, min_value=3, max_value=21, step=1) 
 probability_lockdown_extension = st.sidebar.slider('Chance lockdown extended', value=.4, min_value=.1, max_value=0.9, step=.1) 
 
+st.sidebar.markdown("""Using these values, we perform 5000 simulated years and count the 
+number of days spent in lockdown for each. The figure to the right is a histogram of number of
+days spent in lockdown.
+
+We assume that when a new breakout occurs during lockdown,
+the lockdown is extended for 7 days; and at the end of each lockdown, if it's extended it's extended
+for 3 days.""")
+
 results = get_results(probability_day_outbreak=probability_day_outbreak, snap_lockdown_time=snap_lockdown_time, probability_lockdown_extension=probability_lockdown_extension)
 
 fig = make_figure(results)
